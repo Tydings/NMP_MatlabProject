@@ -8,12 +8,12 @@
 % lastly the inter trial interval between the response and the beginning of
 % the next trial (what about the duration of feedback presentation?)
 
-clear all;
+clear;
 
 % global information for trials
 
 ITIs             = [3000 4000 5000 6000]; % in ms
-Anfangspause     = 1500; %when to start the first trial after beginning of the run
+Init_Break     = 1500; %when to start the first trial after beginning of the run
 stimdur          = 500; %how long is a beep played? (not needed atm)
 stimrate         = 1000;  % Rate of presented beeps in stimphase
 
@@ -53,7 +53,7 @@ Trials = [Trials;
           randsample(repmat(ITIs,1,6),24,0)]; 
       
 % make a vector that specifies when trial begins
-Timing = [Anfangspause];    % Start of first trial after X seconds
+Timing = [Init_Break];    % Start of first trial after X seconds
 
 for i = 1:(length(Trials)-1)
                 %last_onset + Sequence    + Rehearsal   + Response +  ITI
@@ -74,4 +74,4 @@ Design = [ Timing      ;...      % 1:Trial_onset time in ms
            Trials(6,:) ];        % 7:ITI
 
 %Clearing of unused variables
-clear Timing Trials i Anfangspause ITIs correct;
+clear Timing Trials i Anfangspause ITIs correct refphase stimphase stimdur stimrate Init_Break condition;
