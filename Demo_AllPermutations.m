@@ -11,7 +11,7 @@ sca;
 
 % Setup so that it will work (you might not need this, but uncomment if
 % you get a error message regarding syncing !
-Screen('Preference', 'SkipSyncTests', 1)
+%Screen('Preference', 'SkipSyncTests', 1)
 
 %---------------
 % Sound Setup
@@ -22,16 +22,16 @@ InitializePsychSound(1);
 
 % Number of channels and Frequency of the sound
 nrchannels = 2;
-freq = 44100;
+freq = 48000;
 
 % How many times do we wish to play the sound
 repetitions = 1;
 
 % Length of the beep
-beepLengthSecs = 0.4;
+beepLengthSecs = 0.6;
 
 % Length of the pause between beeps
-beepPauseTime = 0.6;
+beepPauseTime = 0.4;
 
 % Start immediately (0 = immediately)
 startCue = 0;
