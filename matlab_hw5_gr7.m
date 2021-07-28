@@ -221,13 +221,19 @@ for t = 1:1
                 % initialise fields for rsp variable 
                 % that would contain details about the response if given
                 rsp.RT = NaN; rsp.keyCode = []; rsp.keyName = [];
+                
+                
                 while ~timedout,
                     % check if a key is pressed
                     % only keys specified in activeKeys are considered valid
                     [ keyIsDown, keyTime, keyCode ] = KbCheck; 
                       if(keyIsDown), break; end
                       if((GetSecs - tStart) > t2wait), timedout=true; break; end
-                  end
+                      
+                      % time between iterations of KbCheck loop
+                      % WaitSecs(0.001);
+                end
+                  
                   % store code for key pressed and reaction time
                   if(~timedout)
                       rsp.RT      = keyTime - tStart;
