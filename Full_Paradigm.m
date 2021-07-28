@@ -249,7 +249,7 @@ RestrictKeysForKbCheck(activeKeys);
 t2wait = 1.5; 
 
 
-for t = 1:4 %length(Design)
+for t = 1:length(Design)
     
     current_trial = Design(:,t);
     shuffled_perm = Shuffle(Permutations{current_trial(2)});
@@ -507,6 +507,10 @@ end
 
 
 sca;
+
+%final saving of responses
+save(log_path, 'log_aud');
+
 
 catch ME
     
