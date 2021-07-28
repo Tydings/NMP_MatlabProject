@@ -471,12 +471,12 @@ for t = 1:4 %length(Design)
     save(log_path, 'log_aud');
  
         
-    for frame = 1:(numFrames)    
+    for frame = 1:(numFrames) %short black screen after feedback presentation
         Screen('FillRect', window, [0 0 0]); %back to black screen
         Screen('Flip', window);
     end
     
-    if t<length(Design) %drawing fixation cross 1 second before first tone
+    if t<length(Design) %drawing fixation cross 1 second before first tone of next trial
         while toc <= Design(1,t+1)/1000 - 1
         end
         % Draw fixation cross
@@ -489,6 +489,8 @@ for t = 1:4 %length(Design)
 
 end
 
+% after run is over
+
 for frame = 1:(numFrames*3) %short display of performance for 3 seconds
     
     DrawFormattedText(window, ['Performance: ', char(string(round((sum(log_aud.responses(4,:))/t)*100, 1))), '%'], 'center', 'center', [0.5 0.5 0.5]);
@@ -496,7 +498,7 @@ for frame = 1:(numFrames*3) %short display of performance for 3 seconds
     
 end
 
-for frame = 1:(numFrames*1.5) %short black screen of 1.5sec for not automatically shutting down after performance presentation
+for frame = 1:(numFrames*1.5) %short black screen of 1.5sec for not automatically closing screen after performance presentation
     
     Screen('FillRect', window, [0 0 0]); %back to black screen
     Screen('Flip', window);
